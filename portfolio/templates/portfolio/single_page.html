@@ -1,0 +1,1134 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}AI Developer Portfolio - Python Django/Flask Expert{% endblock %}
+
+{% block content %}
+        <!-- AI Hero Section -->
+        <section id="home" class="hero-section ai-hero">
+            <div class="ai-particles"></div>
+            <div class="ai-grid-overlay"></div>
+            
+            <div class="container">
+                <div class="row align-items-center min-vh-100">
+                    <!-- Hero Content -->
+                    <div class="col-lg-6">
+                        <div class="ai-typing-container">
+                            <h1 class="ai-glitch" data-text="Arbab Mehmood">Arbab Mehmood</h1>
+                        </div>
+                        <h2 class="hero-subtitle text-light mb-4">
+                            AI Developer & Full-Stack Engineer
+                        </h2>
+                        <p class="text-light mb-4">
+                            Passionate about creating intelligent solutions with Python, Django, Flask, and cutting-edge AI technologies. 
+                            Transforming businesses through artificial intelligence and innovative web development.
+                        </p>
+                        
+                        <!-- Tech Stack Badges -->
+                        <div class="ai-tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Django</span>
+                            <span class="tech-badge">Flask</span>
+                            <span class="tech-badge">TensorFlow</span>
+                            <span class="tech-badge">PyTorch</span>
+                            <span class="tech-badge">FastAPI</span>
+                        </div>
+                        
+                        <!-- Hero Buttons -->
+                        <div class="hero-buttons">
+                            <a href="#portfolio" class="btn btn-primary ai-btn me-3">
+                                <i class="fas fa-project-diagram me-2"></i>View Projects
+                            </a>
+                            <a href="#contact" class="btn btn-outline-light ai-btn">
+                                <i class="fas fa-envelope me-2"></i>Get In Touch
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Hero Photo Section -->
+                    <div class="col-lg-6">
+                        <div class="ai-hero-photo-container">
+                            <!-- AI Image Slider -->
+                            <div class="ai-image-slider-container">
+                                <div class="ai-slider-wrapper">
+                                    <div class="ai-slider-track">
+                                        <!-- Slide 1: AI Development -->
+                                        <div class="ai-slide active" data-slide="1">
+                                            <div class="ai-slide-content">
+                                                <div class="ai-slide-image">
+                                                    <img src="{% static 'images/WhatsApp Image 2025-08-17 at 4.31.49 AM.jpeg' %}" alt="AI Development Project" class="slide-img">
+                                                    <div class="ai-slide-overlay">
+                                                        <div class="ai-slide-info">
+                                                            <h3>AI Development</h3>
+                                                            <p>Cutting-edge artificial intelligence solutions and machine learning applications</p>
+                                                            <div class="ai-slide-tech">
+                                                                <span class="tech-chip">Python</span>
+                                                                <span class="tech-chip">TensorFlow</span>
+                                                                <span class="tech-chip">AI/ML</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Slide 2: Web Development -->
+                                        <div class="ai-slide" data-slide="2">
+                                            <div class="ai-slide-content">
+                                                <div class="ai-slide-image">
+                                                    <img src="{% static 'images/WhatsApp Image 2025-08-17 at 4.31.49 AM (1).jpeg' %}" alt="Web Development Project" class="slide-img">
+                                                    <div class="ai-slide-overlay">
+                                                        <div class="ai-slide-info">
+                                                            <h3>Web Development</h3>
+                                                            <p>Modern web applications with Django, Flask, and cutting-edge technologies</p>
+                                                            <div class="ai-slide-tech">
+                                                                <span class="tech-chip">Django</span>
+                                                                <span class="tech-chip">Flask</span>
+                                                                <span class="tech-chip">FastAPI</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Slide 3: Full-Stack Solutions -->
+                                        <div class="ai-slide" data-slide="3">
+                                            <div class="ai-slide-content">
+                                                <div class="ai-slide-image">
+                                                    <img src="{% static 'images/WhatsApp Image 2025-08-17 at 4.31.50 AM.jpeg' %}" alt="Full-Stack Solutions" class="slide-img">
+                                                    <div class="ai-slide-overlay">
+                                                        <div class="ai-slide-info">
+                                                            <h3>Full-Stack Solutions</h3>
+                                                            <p>End-to-end development from backend APIs to frontend interfaces</p>
+                                                            <div class="ai-slide-tech">
+                                                                <span class="tech-chip">FastAPI</span>
+                                                                <span class="tech-chip">Django</span>
+                                                                <span class="tech-chip">Full-Stack</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Slider Navigation -->
+                                <div class="ai-slider-nav">
+                                    <button class="ai-slider-btn ai-prev-btn" onclick="changeSlide(-1)">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <button class="ai-slider-btn ai-next-btn" onclick="changeSlide(1)">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Slider Indicators -->
+                            <div class="ai-slider-indicators">
+                                <button class="ai-indicator active" onclick="goToSlide(1)"></button>
+                                <button class="ai-indicator" onclick="goToSlide(2)"></button>
+                                <button class="ai-indicator" onclick="goToSlide(3)"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="ai-scroll-indicator">
+                <div class="ai-scroll-arrow"></div>
+            </div>
+        </section>
+
+<!-- AI EXPERTISE SECTION -->
+<section id="about" class="py-5 ai-expertise-section">
+    <div class="ai-expertise-bg"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <div class="ai-section-header">
+                    <h2 class="ai-section-title">AI & Python Expertise</h2>
+                    <div class="ai-title-decoration">
+                        <span class="decoration-line"></span>
+                        <i class="fas fa-brain"></i>
+                        <span class="decoration-line"></span>
+                    </div>
+                    <p class="ai-section-subtitle">Transforming ideas into intelligent solutions with cutting-edge AI technology</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- Main Expertise Card -->
+            <div class="col-lg-8 mb-4">
+                <div class="ai-main-expertise">
+                    <div class="expertise-header">
+                        <div class="expertise-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="expertise-info">
+                            <h3>Arbab Mehmood</h3>
+                            <p class="expertise-role">AI Developer & Full-Stack Engineer</p>
+                            <div class="expertise-status">
+                                <span class="status-dot"></span>
+                                <span class="status-text">AI System Online</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="expertise-description">
+                        <p>Passionate about creating intelligent solutions with Python, Django, Flask, and cutting-edge AI technologies. Transforming businesses through artificial intelligence and innovative web development.</p>
+                    </div>
+                    
+                    <div class="expertise-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">5+</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Projects Completed</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Python Focused</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skills Overview -->
+            <div class="col-lg-4 mb-4">
+                <div class="ai-skills-overview">
+                    <h4 class="skills-title">Core Skills</h4>
+                    <div class="skill-category">
+                        <div class="skill-header">
+                            <i class="fas fa-brain"></i>
+                            <span>AI/ML Development</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                        <div class="skill-percentage">95%</div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <div class="skill-header">
+                            <i class="fab fa-python"></i>
+                            <span>Python Development</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 98%"></div>
+                        </div>
+                        <div class="skill-percentage">98%</div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <div class="skill-header">
+                            <i class="fas fa-globe"></i>
+                            <span>Web Development</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                        <div class="skill-percentage">90%</div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <div class="skill-header">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Data Science</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                        <div class="skill-percentage">88%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technology Grid -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="ai-tech-grid">
+                    <h4 class="tech-grid-title">Technologies & Frameworks</h4>
+                    <div class="tech-categories">
+                        <div class="tech-category">
+                            <h5><i class="fab fa-python"></i> Python Ecosystem</h5>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Python 3.x</span>
+                                <span class="tech-tag">Django</span>
+                                <span class="tech-tag">Flask</span>
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">Pandas</span>
+                                <span class="tech-tag">NumPy</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-category">
+                            <h5><i class="fas fa-brain"></i> AI & Machine Learning</h5>
+                            <div class="tech-tags">
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">Scikit-learn</span>
+                                <span class="tech-tag">OpenCV</span>
+                                <span class="tech-tag">Keras</span>
+                                <span class="tech-tag">NLTK</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-category">
+                            <h5><i class="fas fa-database"></i> Data & Analytics</h5>
+                            <div class="tech-tags">
+                                <span class="tech-tag">SQL</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Redis</span>
+                                <span class="tech-tag">Matplotlib</span>
+                                <span class="tech-tag">Seaborn</span>
+                                <span class="tech-tag">Plotly</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-category">
+                            <h5><i class="fas fa-cloud"></i> DevOps & Cloud</h5>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Git</span>
+                                <span class="tech-tag">CI/CD</span>
+                                <span class="tech-tag">Linux</span>
+                                <span class="tech-tag">Nginx</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <div class="ai-expertise-actions">
+                    <button class="ai-action-btn primary" onclick="scrollToSection('portfolio')">
+                        <i class="fas fa-rocket"></i>
+                        View My Projects
+                    </button>
+                    <button class="ai-action-btn secondary" onclick="scrollToSection('contact')">
+                        <i class="fas fa-paper-plane"></i>
+                        Start a Project
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI SERVICES SECTION -->
+<section id="services" class="py-5 ai-services-section">
+    <div class="ai-services-bg"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <div class="ai-services-header">
+                    <h2 class="ai-services-title">AI-Powered Services</h2>
+                    <div class="ai-services-decoration">
+                        <span class="decoration-line"></span>
+                        <i class="fas fa-cogs"></i>
+                        <span class="decoration-line"></span>
+                    </div>
+                    <p class="ai-services-subtitle">Transforming businesses through intelligent automation and cutting-edge AI solutions</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- AI Development Service -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="ai-service-card">
+                    <div class="service-icon-container">
+                        <div class="service-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="icon-glow"></div>
+                    </div>
+                    
+                    <div class="service-content">
+                        <h3 class="service-title">AI Development</h3>
+                        <p class="service-description">
+                            Custom AI solutions, machine learning models, and neural network implementations for your business needs.
+                        </p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Machine Learning Models</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Neural Networks</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Computer Vision</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-tech-stack">
+                            <h5>Technologies</h5>
+                            <div class="tech-stack-tags">
+                                <span class="tech-stack-tag">TensorFlow</span>
+                                <span class="tech-stack-tag">PyTorch</span>
+                                <span class="tech-stack-tag">Scikit-learn</span>
+                                <span class="tech-stack-tag">OpenCV</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <button class="service-btn" onclick="scrollToSection('contact')">
+                                <i class="fas fa-rocket"></i>
+                                Start AI Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Python Web Apps Service -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="ai-service-card featured">
+                    <div class="service-icon-container">
+                        <div class="service-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="icon-glow"></div>
+                        <div class="featured-badge">Popular</div>
+                    </div>
+                    
+                    <div class="service-content">
+                        <h3 class="service-title">Python Web Apps</h3>
+                        <p class="service-description">
+                            Scalable web applications built with Django/Flask, featuring modern architecture and AI integration.
+                        </p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Full-Stack Development</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>RESTful APIs</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>AI Integration</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-tech-stack">
+                            <h5>Technologies</h5>
+                            <div class="tech-stack-tags">
+                                <span class="tech-stack-tag">Django</span>
+                                <span class="tech-stack-tag">Flask</span>
+                                <span class="tech-stack-tag">FastAPI</span>
+                                <span class="tech-stack-tag">PostgreSQL</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <button class="service-btn" onclick="scrollToSection('contact')">
+                                <i class="fas fa-code"></i>
+                                Build Web App
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data Analytics Service -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="ai-service-card">
+                    <div class="service-icon-container">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="icon-glow"></div>
+                    </div>
+                    
+                    <div class="service-content">
+                        <h3 class="service-title">Data Analytics</h3>
+                        <p class="service-description">
+                            Advanced data analysis, visualization, and predictive modeling using cutting-edge AI techniques.
+                        </p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Predictive Modeling</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Data Visualization</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Business Intelligence</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-tech-stack">
+                            <h5>Technologies</h5>
+                            <div class="tech-stack-tags">
+                                <span class="tech-stack-tag">Pandas</span>
+                                <span class="tech-stack-tag">NumPy</span>
+                                <span class="tech-stack-tag">Matplotlib</span>
+                                <span class="tech-stack-tag">Seaborn</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <button class="service-btn" onclick="scrollToSection('contact')">
+                                <i class="fas fa-chart-bar"></i>
+                                Analyze Data
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Additional Services Row -->
+        <div class="row mt-4">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="ai-service-card">
+                    <div class="service-icon-container">
+                        <div class="service-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="icon-glow"></div>
+                    </div>
+                    
+                    <div class="service-content">
+                        <h3 class="service-title">AI Consulting</h3>
+                        <p class="service-description">
+                            Strategic guidance on AI implementation, technology selection, and digital transformation.
+                        </p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Strategy Planning</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Technology Selection</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>ROI Analysis</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <button class="service-btn" onclick="scrollToSection('contact')">
+                                <i class="fas fa-lightbulb"></i>
+                                Get Consultation
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="ai-service-card">
+                    <div class="service-icon-container">
+                        <div class="service-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="icon-glow"></div>
+                    </div>
+                    
+                    <div class="service-content">
+                        <h3 class="service-title">Mobile AI Apps</h3>
+                        <p class="service-description">
+                            Cross-platform mobile applications with AI capabilities for iOS and Android platforms.
+                        </p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cross-Platform</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>AI Integration</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Offline Capability</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <button class="service-btn" onclick="scrollToSection('contact')">
+                                <i class="fas fa-mobile-alt"></i>
+                                Build Mobile App
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="ai-service-card">
+                    <div class="service-icon-container">
+                        <div class="service-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="icon-glow"></div>
+                    </div>
+                    
+                    <div class="service-content">
+                        <h3 class="service-title">Cloud AI Solutions</h3>
+                        <p class="service-description">
+                            Scalable cloud-based AI services with AWS, Azure, and Google Cloud integration.
+                        </p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cloud Deployment</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Auto-scaling</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cost Optimization</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <button class="service-btn" onclick="scrollToSection('contact')">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                Deploy to Cloud
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Services CTA Section -->
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <div class="ai-services-cta">
+                    <h3>Ready to Transform Your Business with AI?</h3>
+                    <p>Let's discuss how artificial intelligence can revolutionize your operations</p>
+                    <div class="cta-buttons">
+                        <button class="cta-btn primary" onclick="scrollToSection('contact')">
+                            <i class="fas fa-calendar-check"></i>
+                            Schedule Free Consultation
+                        </button>
+                        <button class="cta-btn secondary" onclick="scrollToSection('portfolio')">
+                            <i class="fas fa-eye"></i>
+                            View Case Studies
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI PROJECTS PORTFOLIO SECTION -->
+<section id="portfolio" class="py-5 ai-portfolio-section">
+    <div class="ai-portfolio-bg"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <div class="ai-portfolio-header">
+                    <h2 class="ai-portfolio-title">AI Projects Portfolio</h2>
+                    <div class="ai-portfolio-decoration">
+                        <span class="decoration-line"></span>
+                        <i class="fas fa-project-diagram"></i>
+                        <span class="decoration-line"></span>
+                    </div>
+                    <p class="ai-portfolio-subtitle">Showcasing innovative AI solutions and cutting-edge technology implementations</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Portfolio Filter -->
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <div class="portfolio-filters">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-th"></i>
+                        All Projects
+                    </button>
+                    <button class="filter-btn" data-filter="ai-ml">
+                        <i class="fas fa-brain"></i>
+                        AI/ML
+                    </button>
+                    <button class="filter-btn" data-filter="web-apps">
+                        <i class="fas fa-globe"></i>
+                        Web Apps
+                    </button>
+                    <button class="filter-btn" data-filter="data-analytics">
+                        <i class="fas fa-chart-line"></i>
+                        Data Analytics
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- AI/ML Project 1 -->
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-category="ai-ml">
+                <div class="ai-project-card">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" 
+                             alt="AI-Powered Chatbot" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-overlay-content">
+                                <h4>AI-Powered Chatbot</h4>
+                                <p>Intelligent customer service chatbot with natural language processing</p>
+                                <div class="project-tech">
+                                    <span class="tech-badge">Python</span>
+                                    <span class="tech-badge">TensorFlow</span>
+                                    <span class="tech-badge">NLP</span>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="project-btn primary" onclick="openProjectModal('chatbot')">
+                                        <i class="fas fa-eye"></i>
+                                        View Details
+                                    </button>
+                                    <button class="project-btn secondary" onclick="scrollToSection('contact')">
+                                        <i class="fas fa-paper-plane"></i>
+                                        Similar Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-category-badge">AI/ML</div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3 class="project-title">AI-Powered Chatbot</h3>
+                        <p class="project-description">
+                            Advanced chatbot system with natural language understanding, sentiment analysis, and multi-language support.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <i class="fas fa-users"></i>
+                                <span>10K+ Users</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span>3 Months</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-star"></i>
+                                <span>98% Accuracy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Web App Project -->
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-category="web-apps">
+                <div class="ai-project-card featured">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" 
+                             alt="E-Commerce AI Platform" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-overlay-content">
+                                <h4>E-Commerce AI Platform</h4>
+                                <p>Intelligent e-commerce platform with AI-powered recommendations</p>
+                                <div class="project-tech">
+                                    <span class="tech-badge">Django</span>
+                                    <span class="tech-badge">Python</span>
+                                    <span class="tech-badge">ML</span>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="project-btn primary" onclick="openProjectModal('ecommerce')">
+                                        <i class="fas fa-eye"></i>
+                                        View Details
+                                    </button>
+                                    <button class="project-btn secondary" onclick="scrollToSection('contact')">
+                                        <i class="fas fa-paper-plane"></i>
+                                        Similar Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-category-badge">Web Apps</div>
+                        <div class="featured-badge">Featured</div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3 class="project-title">E-Commerce AI Platform</h3>
+                        <p class="project-description">
+                            Full-stack e-commerce solution with AI-powered product recommendations and intelligent inventory management.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>50K+ Orders</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span>6 Months</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-chart-line"></i>
+                                <span>300% Growth</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data Analytics Project -->
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-category="data-analytics">
+                <div class="ai-project-card">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" 
+                             alt="Predictive Analytics Dashboard" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-overlay-content">
+                                <h4>Predictive Analytics Dashboard</h4>
+                                <p>Business intelligence platform with predictive modeling capabilities</p>
+                                <div class="project-tech">
+                                    <span class="tech-badge">Python</span>
+                                    <span class="tech-badge">Scikit-learn</span>
+                                    <span class="tech-badge">FastAPI</span>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="project-btn primary" onclick="openProjectModal('analytics')">
+                                        <i class="fas fa-eye"></i>
+                                        View Details
+                                    </button>
+                                    <button class="project-btn secondary" onclick="scrollToSection('contact')">
+                                        <i class="fas fa-paper-plane"></i>
+                                        Similar Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-category-badge">Data Analytics</div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3 class="project-title">Predictive Analytics Dashboard</h3>
+                        <p class="project-description">
+                            Real-time business intelligence platform with machine learning-powered predictive analytics and interactive visualizations.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <i class="fas fa-database"></i>
+                                <span>1M+ Records</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span>4 Months</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-bullseye"></i>
+                                <span>95% Precision</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Additional Projects Row -->
+        <div class="row">
+            <!-- AI Consulting Project -->
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-category="ai-ml">
+                <div class="ai-project-card">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" 
+                             alt="Computer Vision System" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-overlay-content">
+                                <h4>Computer Vision System</h4>
+                                <p>Advanced image recognition and object detection system</p>
+                                <div class="project-tech">
+                                    <span class="tech-badge">OpenCV</span>
+                                    <span class="tech-badge">PyTorch</span>
+                                    <span class="tech-badge">Python</span>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="project-btn primary" onclick="openProjectModal('vision')">
+                                        <i class="fas fa-eye"></i>
+                                        View Details
+                                    </button>
+                                    <button class="project-btn secondary" onclick="scrollToSection('contact')">
+                                        <i class="fas fa-paper-plane"></i>
+                                        Similar Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-category-badge">AI/ML</div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3 class="project-title">Computer Vision System</h3>
+                        <p class="project-description">
+                            Real-time object detection and image classification system with 99% accuracy for industrial applications.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <i class="fas fa-camera"></i>
+                                <span>1000+ Images/sec</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span>5 Months</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-bullseye"></i>
+                                <span>99% Accuracy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile AI App -->
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-category="ai-ml">
+                <div class="ai-project-card">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" 
+                             alt="AI Fitness Coach" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-overlay-content">
+                                <h4>AI Fitness Coach</h4>
+                                <p>Mobile app with AI-powered workout recommendations</p>
+                                <div class="project-tech">
+                                    <span class="tech-badge">Flutter</span>
+                                    <span class="tech-badge">Python</span>
+                                    <span class="tech-badge">TensorFlow</span>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="project-btn primary" onclick="openProjectModal('fitness')">
+                                        <i class="fas fa-eye"></i>
+                                        View Details
+                                    </button>
+                                    <button class="project-btn secondary" onclick="scrollToSection('contact')">
+                                        <i class="fas fa-paper-plane"></i>
+                                        Similar Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-category-badge">AI/ML</div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3 class="project-title">AI Fitness Coach</h3>
+                        <p class="project-description">
+                            Cross-platform mobile application with AI-powered workout planning and real-time exercise form analysis.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <i class="fas fa-download"></i>
+                                <span>50K+ Downloads</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span>4 Months</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-star"></i>
+                                <span>4.8 Rating</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cloud AI Project -->
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item" data-category="web-apps">
+                <div class="ai-project-card">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" 
+                             alt="Cloud AI Platform" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-overlay-content">
+                                <h4>Cloud AI Platform</h4>
+                                <p>Scalable AI services platform with cloud deployment</p>
+                                <div class="project-tech">
+                                    <span class="tech-badge">FastAPI</span>
+                                    <span class="tech-badge">AWS</span>
+                                    <span class="tech-badge">Docker</span>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="project-btn primary" onclick="openProjectModal('cloud')">
+                                        <i class="fas fa-eye"></i>
+                                        View Details
+                                    </button>
+                                    <button class="project-btn secondary" onclick="scrollToSection('contact')">
+                                        <i class="fas fa-paper-plane"></i>
+                                        Similar Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-category-badge">Web Apps</div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3 class="project-title">Cloud AI Platform</h3>
+                        <p class="project-description">
+                            Enterprise-grade AI platform with microservices architecture, auto-scaling, and multi-cloud deployment capabilities.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <i class="fas fa-server"></i>
+                                <span>99.9% Uptime</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span>8 Months</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-users"></i>
+                                <span>100+ Clients</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Portfolio CTA -->
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <div class="ai-portfolio-cta">
+                    <h3>Interested in Similar Projects?</h3>
+                    <p>Let's discuss how we can bring your AI vision to life</p>
+                    <div class="cta-buttons">
+                        <button class="cta-btn primary" onclick="scrollToSection('contact')">
+                            <i class="fas fa-rocket"></i>
+                            Start Your Project
+                        </button>
+                        <button class="cta-btn secondary" onclick="scrollToSection('services')">
+                            <i class="fas fa-cogs"></i>
+                            View Services
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI CONTACT SECTION -->
+<section id="contact" class="py-5 bg-light ai-contact-section">
+    <div class="ai-contact-pattern"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title ai-title">Start Your AI Project</h2>
+                <div class="ai-title-underline"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow ai-contact-card">
+                    <div class="card-body p-5">
+                        <form class="ai-contact-form">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="name" class="form-label ai-label">Name</label>
+                                    <input type="text" class="form-control ai-input" id="name" required>
+                                    <div class="ai-input-focus"></div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label ai-label">Email</label>
+                                    <input type="email" class="form-control ai-input" id="email" required>
+                                    <div class="ai-input-focus"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="project_type" class="form-label ai-label">Project Type</label>
+                                <select class="form-control ai-input" id="project_type" required>
+                                    <option value="">Select Project Type</option>
+                                    <option value="ai">AI/ML Development</option>
+                                    <option value="web">Web Application</option>
+                                    <option value="data">Data Analytics</option>
+                                    <option value="consulting">AI Consulting</option>
+                                </select>
+                                <div class="ai-input-focus"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label ai-label">Project Details</label>
+                                <textarea class="form-control ai-input" id="message" rows="5" required placeholder="Describe your AI project requirements..."></textarea>
+                                <div class="ai-input-focus"></div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg ai-submit-btn">
+                                    <i class="fas fa-rocket"></i> Launch AI Project
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Firebase Status Indicator -->
+<div class="firebase-status-container" style="position: fixed; top: 20px; left: 20px; z-index: 10000;">
+    <div class="firebase-status" style="
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        background: rgba(0,0,0,0.8);
+        color: white;
+    "></div>
+</div>
+
+<!-- Floating WhatsApp Button -->
+<div class="floating-whatsapp">
+    <a href="https://wa.me/923255661708?text=Hi%20Arbab!%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project." 
+       target="_blank" 
+       class="whatsapp-btn"
+       title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+    </a>
+</div>
+
+{% endblock %}

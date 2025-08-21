@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read access to all authenticated users
+    match /{document=**} {
+      allow read: if request.auth != null;
+    }
+    
+    // Allow write access to contacts collection for form submissions
+    match /contacts/{document} {
+      allow create: if request.auth != null 
+        && request.resource.data.name is string
+        && request.resource.data.email is string
+        && request.resource.data.projectType is string
+        && request.resource.data.message is string
+        && request.resource.data.timestamp is string
+        && request.resource.data.source == 'portfolio_website';
+    }
+    
+    // Allow write access to portfolio_views collection for analytics
+    match /portfolio_views/{document} {
+      allow create: if request.auth != null
+        && request.resource.data.projectName is string
+        && request.resource.data.category is string
+        && request.resource.data.timestamp is string;
+    }
+    
+    // Deny all other write operations
+    match /{document=**} {
+      allow write: if false;
+    }
+  }
+}

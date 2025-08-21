@@ -1,0 +1,29 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Allow read access to all authenticated users
+    match /{allPaths=**} {
+      allow read: if request.auth != null;
+    }
+    
+    // Allow uploads to portfolio-images folder for authenticated users
+    match /portfolio-images/{imageId} {
+      allow write: if request.auth != null
+        && request.resource.size < 5 * 1024 * 1024 // 5MB max
+        && request.resource.contentType.matches('image/.*')
+        && imageId.matches('.*\\.(jpg|jpeg|png|gif|webp)');
+    }
+    
+    // Allow uploads to project-files folder for authenticated users
+    match /project-files/{fileName} {
+      allow write: if request.auth != null
+        && request.resource.size < 10 * 1024 * 1024 // 10MB max
+        && request.resource.contentType.matches('application/.*|text/.*|image/.*');
+    }
+    
+    // Deny all other write operations
+    match /{allPaths=**} {
+      allow write: if false;
+    }
+  }
+}
