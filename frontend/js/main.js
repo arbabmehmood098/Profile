@@ -129,19 +129,50 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (form) {
             // Form submission
-            form.addEventListener('submit', (e) => {
+            form.addEventListener('submit', async (e) => {
                 e.preventDefault();
+                
+                // Get form data
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    project_type: document.getElementById('project_type').value,
+                    message: document.getElementById('message').value
+                };
+                
+                // Validate form data
+                if (!formData.name || !formData.email || !formData.phone || !formData.project_type || !formData.message) {
+                    showNotification('Please fill in all fields.', 'error');
+                    return;
+                }
+                
+                // Phone number validation
+                const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+                if (!phoneRegex.test(formData.phone.replace(/[\s\-\(\)]/g, ''))) {
+                    showNotification('Please enter a valid phone number.', 'error');
+                    return;
+                }
                 
                 // Show loading state
                 const submitBtn = form.querySelector('.ai-submit-btn');
                 const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="ai-loading"></i> Processing...';
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
                 submitBtn.disabled = true;
                 
-                // Simulate form submission
-                setTimeout(() => {
-                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                try {
+                    // Create WhatsApp message with form details
+                    const whatsappMessage = createWhatsAppMessage(formData);
+                    
+                    // Show success message
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Form Submitted!';
                     submitBtn.style.background = 'linear-gradient(45deg, #00ff88, #00d4ff)';
+                    
+                    // Show success notification with WhatsApp instructions
+                    showNotification('Form submitted! Please send me a WhatsApp message with these details.', 'success');
+                    
+                    // Show WhatsApp message details
+                    showWhatsAppDetails(whatsappMessage);
                     
                     // Reset form after delay
                     setTimeout(() => {
@@ -149,8 +180,27 @@ document.addEventListener('DOMContentLoaded', function() {
                         submitBtn.innerHTML = originalText;
                         submitBtn.style.background = 'linear-gradient(45deg, var(--ai-primary), var(--ai-accent))';
                         submitBtn.disabled = false;
-                    }, 2000);
-                }, 2000);
+                    }, 5000);
+                    
+                    console.log('Form submitted successfully!');
+                    
+                } catch (error) {
+                    console.error('Error processing form:', error);
+                    
+                    // Show error message
+                    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
+                    submitBtn.style.background = 'linear-gradient(45deg, #ff4757, #ff3742)';
+                    
+                    // Show error notification
+                    showNotification('Error processing form. Please try again.', 'error');
+                    
+                    // Reset button after delay
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.style.background = 'linear-gradient(45deg, var(--ai-primary), var(--ai-accent))';
+                        submitBtn.disabled = false;
+                    }, 3000);
+                }
             });
         }
         
@@ -165,6 +215,95 @@ document.addEventListener('DOMContentLoaded', function() {
                     input.parentElement.classList.remove('focused');
                 }
             });
+        });
+    }
+    
+    // ===== CREATE WHATSAPP MESSAGE =====
+    function createWhatsAppMessage(formData) {
+        const message = `🚀 *NEW PORTFOLIO CONTACT!*
+        
+👤 *Name:* ${formData.name}
+📧 *Email:* ${formData.email}
+📱 *Phone:* ${formData.phone}
+🎯 *Project Type:* ${formData.project_type}
+💬 *Message:* ${formData.message}
+
+⏰ *Time:* ${new Date().toLocaleString()}
+🌐 *Source:* Portfolio Website
+
+Please send me a WhatsApp message with these details to continue the conversation!`;
+        
+        return message;
+    }
+    
+    // ===== SHOW WHATSAPP DETAILS =====
+    function showWhatsAppDetails(message) {
+        // Create WhatsApp details modal
+        const modal = document.createElement('div');
+        modal.className = 'whatsapp-details-modal';
+        modal.innerHTML = `
+            <div class="whatsapp-modal-content">
+                <div class="whatsapp-modal-header">
+                    <h3>📱 Send WhatsApp Message</h3>
+                    <button class="close-modal-btn">&times;</button>
+                </div>
+                <div class="whatsapp-modal-body">
+                    <p>Please send me a WhatsApp message with these details:</p>
+                    <div class="form-details">
+                        <div class="detail-item">
+                            <strong>Name:</strong> ${document.getElementById('name').value}
+                        </div>
+                        <div class="detail-item">
+                            <strong>Email:</strong> ${document.getElementById('email').value}
+                        </div>
+                        <div class="detail-item">
+                            <strong>Phone:</strong> ${document.getElementById('phone').value}
+                        </div>
+                        <div class="detail-item">
+                            <strong>Project Type:</strong> ${document.getElementById('project_type').value}
+                        </div>
+                        <div class="detail-item">
+                            <strong>Message:</strong> ${document.getElementById('message').value}
+                        </div>
+                    </div>
+                    <div class="whatsapp-actions">
+                        <a href="https://wa.me/923255661708?text=${encodeURIComponent(message)}" 
+                           class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Send WhatsApp Message
+                        </a>
+                        <p class="whatsapp-note">
+                            📱 <strong>WhatsApp Number:</strong> +92 325 566 1708
+                        </p>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        // Add modal to page
+        document.body.appendChild(modal);
+        
+        // Show modal
+        setTimeout(() => {
+            modal.classList.add('show');
+        }, 100);
+        
+        // Close modal functionality
+        const closeBtn = modal.querySelector('.close-modal-btn');
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.remove();
+            }, 300);
+        });
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    modal.remove();
+                }, 300);
+            }
         });
     }
     
@@ -315,7 +454,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // ===== AI WEBSITE INITIALIZATION =====
     function initAIWebsite() {
-        initAINavigation();
         createParticles();
         animateSkillBars();
         initPortfolioFilter();
@@ -328,6 +466,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initScrollIndicator();
         initBackgroundPatterns();
         initInteractiveEffects();
+        optimizePerformance();
     }
     
     // ===== START THE AI WEBSITE =====
@@ -498,389 +637,36 @@ function createGlitchEffect(element, duration = 2000) {
     glitch();
 }
 
-// ===== FIREBASE INTEGRATION =====
-// Wait for Firebase to be initialized
-function waitForFirebase() {
-    return new Promise((resolve) => {
-        if (window.FirebaseApp) {
-            resolve(window.FirebaseApp);
-        } else {
-            const checkFirebase = setInterval(() => {
-                if (window.FirebaseApp) {
-                    clearInterval(checkFirebase);
-                    resolve(window.FirebaseApp);
-                }
-            }, 100);
-        }
-    });
-}
-
-// ===== AI IMAGE SLIDER FUNCTIONALITY =====
-let currentSlide = 1;
-const totalSlides = 3;
-let autoPlayInterval;
-
-function initSlider() {
-    showSlide(currentSlide);
-    startAutoPlay();
-    
-    // Track slider initialization
-    waitForFirebase().then(firebase => {
-        firebase.trackEvent('slider_initialized', { total_slides: totalSlides });
-    });
-}
-
-function changeSlide(direction) {
-    currentSlide += direction;
-    if (currentSlide > totalSlides) currentSlide = 1;
-    if (currentSlide < 1) currentSlide = totalSlides;
-    showSlide(currentSlide);
-    resetAutoPlay();
-    
-    // Track slide change
-    waitForFirebase().then(firebase => {
-        firebase.trackEvent('slider_navigation', { 
-            direction: direction > 0 ? 'next' : 'previous',
-            current_slide: currentSlide 
-        });
-    });
-}
-
-function goToSlide(slideNumber) {
-    currentSlide = slideNumber;
-    showSlide(currentSlide);
-    resetAutoPlay();
-    
-    // Track direct slide navigation
-    waitForFirebase().then(firebase => {
-        firebase.trackEvent('slider_direct_navigation', { 
-            target_slide: slideNumber 
-        });
-    });
-}
-
-function showSlide(slideNumber) {
-    // Hide all slides
-    document.querySelectorAll('.ai-slide').forEach(slide => {
-        slide.classList.remove('active');
-    });
-    
-    // Show current slide
-    const currentSlideElement = document.querySelector(`[data-slide="${slideNumber}"]`);
-    if (currentSlideElement) {
-        currentSlideElement.classList.add('active');
-    }
-    
-    // Update indicators
-    updateIndicators(slideNumber);
-}
-
-function updateIndicators(activeSlide) {
-    document.querySelectorAll('.ai-indicator').forEach((indicator, index) => {
-        if (index + 1 === activeSlide) {
-            indicator.classList.add('active');
-        } else {
-            indicator.classList.remove('active');
-        }
-    });
-}
-
-function startAutoPlay() {
-    autoPlayInterval = setInterval(() => {
-        currentSlide++;
-        if (currentSlide > totalSlides) currentSlide = 1;
-        showSlide(currentSlide);
-    }, 2000); // 2 seconds interval
-}
-
-function resetAutoPlay() {
-    clearInterval(autoPlayInterval);
-    startAutoPlay();
-}
-
-function pauseAutoPlay() {
-    clearInterval(autoPlayInterval);
-    
-    // Track auto-play pause
-    waitForFirebase().then(firebase => {
-        firebase.trackEvent('slider_autoplay_pause');
-    });
-}
-
-function resumeAutoPlay() {
-    startAutoPlay();
-    
-    // Track auto-play resume
-    waitForFirebase().then(firebase => {
-        firebase.trackEvent('slider_autoplay_resume');
-    });
-}
-
-// ===== PORTFOLIO FILTERING =====
-function initPortfolioFilters() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const filter = this.getAttribute('data-filter');
-            
-            // Update active button
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Filter portfolio items
-            portfolioItems.forEach(item => {
-                if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                    item.style.display = 'block';
-                    item.style.animation = 'fadeIn 0.5s ease-in';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-            
-            // Track filter usage
-            waitForFirebase().then(firebase => {
-                firebase.trackEvent('portfolio_filter', { filter: filter });
-            });
-        });
-    });
-}
-
-// ===== PORTFOLIO PROJECT TRACKING =====
-function trackPortfolioProject(projectName, projectCategory) {
-    waitForFirebase().then(firebase => {
-        firebase.trackPortfolioView(projectName, projectCategory);
-        firebase.savePortfolioView(projectName, projectCategory);
-    });
-}
-
-// ===== CONTACT FORM INTEGRATION =====
-function initContactForm() {
-    const contactForm = document.querySelector('.ai-contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                projectType: document.getElementById('project_type').value,
-                message: document.getElementById('message').value.trim()
-            };
-            
-            // Basic validation
-            if (!formData.name || !formData.email || !formData.projectType || !formData.message) {
-                showNotification('Please fill in all required fields.', 'error');
-                return;
-            }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(formData.email)) {
-                showNotification('Please enter a valid email address.', 'error');
-                return;
-            }
-            
-            // Show loading state
-            const submitBtn = contactForm.querySelector('.ai-submit-btn');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitBtn.disabled = true;
-            
-            try {
-                // Wait for Firebase to be ready
-                const firebase = await waitForFirebase();
-                
-                // Track form submission attempt
-                firebase.trackEvent('contact_form_submit_attempt', {
-                    project_type: formData.projectType,
-                    timestamp: new Date().toISOString()
-                });
-                
-                // Save to Firebase
-                const result = await firebase.saveContactForm(formData);
-                
-                if (result.success) {
-                    // Show success message
-                    showNotification('🎉 Message sent successfully! I\'ll get back to you within 24 hours.', 'success');
-                    
-                    // Track successful submission
-                    firebase.trackEvent('contact_form_success', {
-                        project_type: formData.projectType,
-                        timestamp: new Date().toISOString()
-                    });
-                    
-                    // Reset form
-                    contactForm.reset();
-                    
-                    // Reset submit button
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    
-                    // Optional: Scroll to top or show thank you message
-                    setTimeout(() => {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }, 1000);
-                    
-                } else {
-                    throw new Error(result.error || 'Unknown error occurred');
-                }
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                
-                // Show error message
-                let errorMessage = 'Sorry, there was an error sending your message. ';
-                if (error.message.includes('permission-denied')) {
-                    errorMessage += 'Please check your internet connection and try again.';
-                } else if (error.message.includes('unavailable')) {
-                    errorMessage += 'Service temporarily unavailable. Please try again later.';
-                } else {
-                    errorMessage += 'Please try again.';
-                }
-                
-                showNotification(errorMessage, 'error');
-                
-                // Track form error
-                try {
-                    const firebase = await waitForFirebase();
-                    firebase.trackEvent('contact_form_error', {
-                        error: error.message,
-                        project_type: formData.projectType,
-                        timestamp: new Date().toISOString()
-                    });
-                } catch (trackError) {
-                    console.error('Error tracking form error:', trackError);
-                }
-                
-                // Reset submit button
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }
-        });
-        
-        // Add real-time validation feedback
-        const inputs = contactForm.querySelectorAll('.ai-input');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                validateField(this);
-            });
-            
-            input.addEventListener('input', function() {
-                clearFieldError(this);
-            });
-        });
-    }
-}
-
-// Field validation function
-function validateField(field) {
-    const value = field.value.trim();
-    const fieldName = field.id;
-    
-    clearFieldError(field);
-    
-    if (!value) {
-        showFieldError(field, `${getFieldLabel(fieldName)} is required.`);
-        return false;
-    }
-    
-    if (fieldName === 'email' && value) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(value)) {
-            showFieldError(field, 'Please enter a valid email address.');
-            return false;
-        }
-    }
-    
-    if (fieldName === 'message' && value.length < 10) {
-        showFieldError(field, 'Message must be at least 10 characters long.');
-        return false;
-    }
-    
-    return true;
-}
-
-// Show field error
-function showFieldError(field, message) {
-    clearFieldError(field);
-    
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'field-error';
-    errorDiv.textContent = message;
-    errorDiv.style.cssText = `
-        color: #ef4444;
-        font-size: 0.875rem;
-        margin-top: 0.25rem;
-        animation: fadeIn 0.3s ease-in;
-    `;
-    
-    field.parentNode.appendChild(errorDiv);
-    field.classList.add('is-invalid');
-}
-
-// Clear field error
-function clearFieldError(field) {
-    const existingError = field.parentNode.querySelector('.field-error');
-    if (existingError) {
-        existingError.remove();
-    }
-    field.classList.remove('is-invalid');
-}
-
-// Get field label
-function getFieldLabel(fieldId) {
-    const labels = {
-        'name': 'Name',
-        'email': 'Email',
-        'project_type': 'Project Type',
-        'message': 'Message'
-    };
-    return labels[fieldId] || fieldId;
-}
-
 // ===== NOTIFICATION SYSTEM =====
 function showNotification(message, type = 'info') {
+    // Remove existing notifications
+    const existingNotifications = document.querySelectorAll('.ai-notification');
+    existingNotifications.forEach(notification => notification.remove());
+    
     // Create notification element
     const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
+    notification.className = `ai-notification ai-notification-${type}`;
     notification.innerHTML = `
         <div class="notification-content">
-            <span class="notification-message">${message}</span>
-            <button class="notification-close">&times;</button>
+            <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-triangle' : 'info-circle'}"></i>
+            <span>${message}</span>
         </div>
-    `;
-    
-    // Add styles
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: ${type === 'success' ? '#22c55e' : type === 'error' ? '#ef4444' : '#3b82f6'};
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 10px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        z-index: 10000;
-        max-width: 400px;
-        animation: slideInRight 0.3s ease-out;
     `;
     
     // Add to page
     document.body.appendChild(notification);
     
-    // Close button functionality
-    const closeBtn = notification.querySelector('.notification-close');
-    closeBtn.addEventListener('click', () => {
-        notification.remove();
-    });
-    
-    // Auto-remove after 5 seconds
+    // Show notification
     setTimeout(() => {
-        if (notification.parentNode) {
+        notification.classList.add('show');
+    }, 100);
+    
+    // Auto-hide after 5 seconds
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
             notification.remove();
-        }
+        }, 300);
     }, 5000);
 }
 
@@ -892,144 +678,20 @@ function scrollToSection(sectionId) {
             behavior: 'smooth',
             block: 'start'
         });
-        
-        // Track section navigation
-        waitForFirebase().then(firebase => {
-            firebase.trackEvent('section_navigation', { 
-                target_section: sectionId 
-            });
-        });
     }
 }
 
 // ===== PORTFOLIO MODAL FUNCTIONS =====
 function openProjectModal(projectId) {
-    // Track project modal open
-    waitForFirebase().then(firebase => {
-        firebase.trackEvent('project_modal_open', { project_id: projectId });
-    });
-    
     // For now, just scroll to contact section
     // You can implement a full modal system here
     scrollToSection('contact');
 }
 
-// ===== EVENT LISTENERS =====
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize slider
-    initSlider();
-    
-    // Initialize portfolio filters
-    initPortfolioFilters();
-    
-    // Initialize contact form
-    initContactForm();
-    
-    // Pause auto-play on hover
-    const slider = document.querySelector('.ai-image-slider-container');
-    if (slider) {
-        slider.addEventListener('mouseenter', pauseAutoPlay);
-        slider.addEventListener('mouseleave', resumeAutoPlay);
-    }
-    
-    // Keyboard navigation
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowLeft') {
-            changeSlide(-1);
-        } else if (e.key === 'ArrowRight') {
-            changeSlide(1);
-        }
-    });
-    
-    // Touch/swipe support
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    if (slider) {
-        slider.addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-        
-        slider.addEventListener('touchend', function(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-    }
-    
-    function handleSwipe() {
-        const swipeThreshold = 50;
-        if (touchEndX < touchStartX - swipeThreshold) {
-            // Swipe left - next slide
-            changeSlide(1);
-        } else if (touchEndX > touchStartX + swipeThreshold) {
-            // Swipe right - previous slide
-            changeSlide(-1);
-        }
-    }
-    
-    // Track portfolio project interactions
-    document.querySelectorAll('.ai-project-card').forEach(card => {
-        card.addEventListener('click', function() {
-            const projectTitle = this.querySelector('.project-title').textContent;
-            const projectCategory = this.querySelector('.project-category-badge').textContent;
-            trackPortfolioProject(projectTitle, projectCategory);
-        });
-    });
-    
-    // Track CTA button clicks
-    document.querySelectorAll('[onclick*="scrollToSection"]').forEach(button => {
-        button.addEventListener('click', function() {
-            const action = this.textContent.trim();
-            waitForFirebase().then(firebase => {
-                firebase.trackEvent('cta_button_click', { 
-                    action: action,
-                    button_text: this.textContent.trim()
-                });
-            });
-        });
-    });
-    
-    console.log('Main JavaScript initialized with Firebase integration');
-});
-
-// ===== CSS ANIMATIONS =====
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideInRight {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-    
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .notification-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-    }
-    
-    .notification-close {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 0;
-        line-height: 1;
-    }
-    
-    .notification-close:hover {
-        opacity: 0.8;
-    }
-`;
-document.head.appendChild(style);
-
 // Export functions for global use
 window.AIWebsite = {
     smoothScrollTo,
-    createGlitchEffect
+    createGlitchEffect,
+    scrollToSection,
+    openProjectModal
 };

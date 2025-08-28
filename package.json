@@ -1,0 +1,29 @@
+{
+  "name": "ai-developer-portfolio",
+  "version": "1.0.0",
+  "description": "AI Developer Portfolio with WhatsApp Contact Form",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server frontend",
+    "build": "echo 'Build completed'",
+    "start": "live-server frontend"
+  },
+  "keywords": [
+    "portfolio",
+    "ai",
+    "developer",
+    "whatsapp",
+    "responsive",
+    "frontend"
+  ],
+  "author": "Arbab Mehmood",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ai-developer-portfolio.git"
+  },
+  "homepage": "https://your-portfolio.vercel.app"
+}
