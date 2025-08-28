@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbab Mehmood - AI Developer Portfolio</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top ai-navbar">
+        <div class="container">
+            <a class="navbar-brand ai-brand" href="#home">
+                <span class="ai-text">ARBAB</span>
+                <div class="ai-pulse"></div>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link ai-nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ai-nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ai-nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ai-nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ai-nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="ai-particles"></div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            Hi, I'm <span class="ai-glitch" data-text="Arbab Mehmood">Arbab Mehmood</span>
+                        </h1>
+                        <h2 class="hero-subtitle">AI Developer & Full Stack Engineer</h2>
+                        <p class="hero-description">
+                            I create intelligent solutions that bridge the gap between AI innovation and real-world applications. 
+                            Specializing in machine learning, web development, and cutting-edge technology.
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary btn-lg" onclick="scrollToSection('portfolio')">
+                                <i class="fas fa-rocket"></i> View My Work
+                            </button>
+                            <button class="btn btn-outline-primary btn-lg" onclick="scrollToSection('contact')">
+                                <i class="fas fa-envelope"></i> Get In Touch
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-visual">
+                        <div class="ai-neural-network">
+                            <div class="neural-node"></div>
+                            <div class="neural-node"></div>
+                            <div class="neural-node"></div>
+                            <div class="neural-connection"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title ai-title">About Me</h2>
+                    <div class="ai-title-underline"></div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <h3>Passionate AI Developer</h3>
+                        <p>
+                            I'm a dedicated developer with expertise in artificial intelligence, machine learning, 
+                            and full-stack web development. My passion lies in creating innovative solutions that 
+                            leverage cutting-edge technology to solve real-world problems.
+                        </p>
+                        <p>
+                            With experience in Python, JavaScript, React, and various AI frameworks, I build 
+                            intelligent applications that are both powerful and user-friendly.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="skills-container">
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Machine Learning</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Web Development</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title ai-title">My Services</h2>
+                    <div class="ai-title-underline"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="ai-service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI/ML Development</h3>
+                        <p>Custom machine learning models, neural networks, and AI-powered applications.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="ai-service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Web Development</h3>
+                        <p>Modern, responsive web applications with cutting-edge technologies.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="ai-service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Data Analytics</h3>
+                        <p>Data visualization, analysis, and insights for business intelligence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title ai-title">AI Projects Portfolio</h2>
+                    <div class="ai-title-underline"></div>
+                    <p class="text-muted">Showcasing innovative AI solutions and cutting-edge technology implementations</p>
+                </div>
+            </div>
+            
+            <!-- Portfolio Filter -->
+            <div class="row mb-4">
+                <div class="col-12 text-center">
+                    <div class="portfolio-filters">
+                        <button class="filter-btn active" data-filter="all">
+                            <i class="fas fa-th"></i>
+                            All Projects
+                        </button>
+                        <button class="filter-btn" data-filter="ai-ml">
+                            <i class="fas fa-brain"></i>
+                            AI/ML
+                        </button>
+                        <button class="filter-btn" data-filter="web-apps">
+                            <i class="fas fa-globe"></i>
+                            Web Apps
+                        </button>
+                        <button class="filter-btn" data-filter="data-analytics">
+                            <i class="fas fa-chart-line"></i>
+                            Data Analytics
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="ai-project-item ai portfolio-item" data-category="ai-ml">
+                        <div class="project-image">
+                            <img src="/static/images/ai-chatbot.jpg" alt="AI-Powered Chatbot" class="img-fluid">
+                        </div>
+                        <div class="project-content">
+                            <h3>AI-Powered Chatbot</h3>
+                            <p>Intelligent customer service chatbot with natural language processing</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">TensorFlow</span>
+                                <span class="tech-badge">NLP</span>
+                            </div>
+                            <span class="project-category-badge">AI/ML</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="ai-project-item web portfolio-item" data-category="web-apps">
+                        <div class="project-image">
+                            <img src="/static/images/e-commerce-ai.jpg" alt="E-Commerce AI Platform" class="img-fluid">
+                        </div>
+                        <div class="project-content">
+                            <h3>E-Commerce AI Platform</h3>
+                            <p>Intelligent e-commerce platform with AI-powered recommendations</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Django</span>
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">ML</span>
+                            </div>
+                            <span class="project-category-badge">Web Apps</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="ai-project-item data portfolio-item" data-category="data-analytics">
+                        <div class="project-image">
+                            <img src="/static/images/predictive-analytics.jpg" alt="Predictive Analytics Dashboard" class="img-fluid">
+                        </div>
+                        <div class="project-content">
+                            <h3>Predictive Analytics Dashboard</h3>
+                            <p>Business intelligence platform with predictive modeling capabilities</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">Scikit-learn</span>
+                                <span class="tech-badge">FastAPI</span>
+                            </div>
+                            <span class="project-category-badge">Data Analytics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Projects Row -->
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="ai-project-item ai portfolio-item" data-category="ai-ml">
+                        <div class="project-image">
+                            <img src="/static/images/computer-vision.jpg" alt="Computer Vision System" class="img-fluid">
+                        </div>
+                        <div class="project-content">
+                            <h3>Computer Vision System</h3>
+                            <p>Advanced image recognition and object detection system</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">OpenCV</span>
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">PyTorch</span>
+                            </div>
+                            <span class="project-category-badge">AI/ML</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="ai-project-item ai portfolio-item" data-category="ai-ml">
+                        <div class="project-image">
+                            <img src="/static/images/ai-fitness.jpg" alt="AI Fitness Coach" class="img-fluid">
+                        </div>
+                        <div class="project-content">
+                            <h3>AI Fitness Coach</h3>
+                            <p>Mobile app with AI-powered workout recommendations</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Flutter</span>
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">TensorFlow</span>
+                            </div>
+                            <span class="project-category-badge">AI/ML</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="ai-project-item web portfolio-item" data-category="web-apps">
+                        <div class="project-image">
+                            <img src="/static/images/cloud-ai.jpg" alt="Cloud AI Platform" class="img-fluid">
+                        </div>
+                        <div class="project-content">
+                            <h3>Cloud AI Platform</h3>
+                            <p>Scalable AI services platform with cloud deployment</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">FastAPI</span>
+                                <span class="tech-badge">AWS</span>
+                                <span class="tech-badge">Docker</span>
+                            </div>
+                            <span class="project-category-badge">Web Apps</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title ai-title">Get In Touch</h2>
+                    <div class="ai-title-underline"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card shadow ai-contact-card">
+                        <div class="card-body p-5">
+                            <form class="ai-contact-form">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label ai-label">Name</label>
+                                        <input type="text" class="form-control ai-input" id="name" required>
+                                        <div class="ai-input-focus"></div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label ai-label">Email</label>
+                                        <input type="email" class="form-control ai-input" id="email" required>
+                                        <div class="ai-input-focus"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="phone" class="form-label ai-label">Contact Number</label>
+                                        <input type="tel" class="form-control ai-input" id="phone" placeholder="+1 234 567 8900" required>
+                                        <div class="ai-input-focus"></div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="project_type" class="form-label ai-label">Project Type</label>
+                                        <select class="form-control ai-input" id="project_type" required>
+                                            <option value="">Select Project Type</option>
+                                            <option value="ai">AI/ML Development</option>
+                                            <option value="web">Web Application</option>
+                                            <option value="data">Data Analytics</option>
+                                            <option value="consulting">AI Consulting</option>
+                                        </select>
+                                        <div class="ai-input-focus"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label ai-label">Project Details</label>
+                                    <textarea class="form-control ai-input" id="message" rows="5" required placeholder="Describe your AI project requirements..."></textarea>
+                                    <div class="ai-input-focus"></div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg ai-submit-btn">
+                                        <i class="fas fa-rocket"></i> Launch AI Project
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white text-center">
+        <div class="container">
+            <p>&copy; 2025 Arbab Mehmood. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="text-white me-3"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="/js/main.js"></script>
+</body>
+</html>
